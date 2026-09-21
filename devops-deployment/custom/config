@@ -1,0 +1,21 @@
+[profile devops-1]
+sso_session = devops-1
+sso_account_id = 000000000000
+sso_role_name = devops-1
+region = us-east-1
+output = text
+[sso-session devops-1]
+sso_start_url = https://d-xxxxxxxxxx.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+
+[profile devops-2]
+sso_session = devops-2
+sso_account_id = 000000000000
+sso_role_name = devops-2
+region = us-east-1
+output = text
+[sso-session devops-2]
+sso_start_url = https://d-xxxxxxxxxx.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access

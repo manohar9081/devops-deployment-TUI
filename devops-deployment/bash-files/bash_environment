@@ -1,0 +1,53 @@
+#custom
+alias brave="~/.local/bin/brave.AppImage"
+#alias helium="~/.local/bin/helium.AppImage"
+
+# ---- Kubernetes helpers (custom/k8s/) ----
+alias k8screds="~/.local/bin/scripts/k8s/add_yaml_to_kconf.sh"
+alias k_doctor="~/.local/bin/scripts/k8s/k_doctor.sh"
+alias k_cleanup="~/.local/bin/scripts/k8s/k_cleanup.sh"
+alias k_top="~/.local/bin/scripts/k8s/k_top.sh"
+alias k_restart="~/.local/bin/scripts/k8s/k_restart.sh"
+alias k_forward="~/.local/bin/scripts/k8s/k_forward.sh"
+alias k_events="~/.local/bin/scripts/k8s/k_events.sh"
+alias helm_manager="~/.local/bin/scripts/k8s/helm_manager.sh"
+alias helm_lint="~/.local/bin/scripts/k8s/helm_lint.sh"
+alias htest="~/.local/bin/scripts/k8s/helm_template_test.sh"
+alias yaml_lint="~/.local/bin/scripts/k8s/yaml_lint.sh"
+alias kustomize_check="~/.local/bin/scripts/k8s/kustomize_check.sh"
+alias argocd_mgr="~/.local/bin/scripts/k8s/argocd_manager.sh"
+alias b64="~/.local/bin/scripts/k8s/base64_secret.sh"
+alias decode_jwt="~/.local/bin/scripts/k8s/decode_jwt.sh"
+
+# ---- AWS helpers (custom/aws/) ----
+alias s3_local_copy="~/.local/bin/scripts/aws/s3_local_copy.sh"
+alias local_s3_upload="~/.local/bin/scripts/aws/local_s3_upload.sh"
+alias s3_local_objects="~/.local/bin/scripts/aws/s3_local_objects.sh"
+alias s3_date_download="~/.local/bin/scripts/aws/s3_date_download.sh"
+alias cw_logs="~/.local/bin/scripts/aws/cw_logs.sh"
+alias sg_audit="~/.local/bin/scripts/aws/sg_audit.sh"
+alias iam_key_audit="~/.local/bin/scripts/aws/iam_key_audit.sh"
+alias ec2_connect="~/.local/bin/scripts/aws/ec2_connect.sh"
+alias cost_snapshot="~/.local/bin/scripts/aws/cost_snapshot.sh"
+alias ami_finder="~/.local/bin/scripts/aws/ami_finder.sh"
+alias cert_expiry="~/.local/bin/scripts/aws/cert_expiry.sh"
+alias env_diff="~/.local/bin/scripts/aws/env_diff.sh"
+
+# ---- Terraform helpers (custom/tf/) ----
+alias tf_state="~/.local/bin/scripts/tf/tf_state.sh"
+
+# ---- Misc / general helpers (custom/misc/) ----
+alias fmt="~/.local/bin/scripts/misc/fmt_yaml_json.sh"
+alias port_check="~/.local/bin/scripts/misc/port_check.sh"
+alias nslookup_all="~/.local/bin/scripts/misc/nslookup_all.sh"
+alias git_cleanup="~/.local/bin/scripts/misc/git_cleanup.sh"
+alias docker_prune="~/.local/bin/scripts/misc/docker_prune.sh"
+alias ssh_key_gen="~/.local/bin/scripts/misc/ssh_key_audit.sh gen"
+alias ssh_key_check="~/.local/bin/scripts/misc/ssh_key_audit.sh"
+alias fzf_setup="source ~/.local/bin/scripts/misc/fzf_setup.sh"
+alias set_cursor="source ~/.local/bin/scripts/misc/set_cursor.sh"
+
+alias git.="cd ~/gitprojects"
+alias bin.="cd ~/.local/bin"
+alias deployment="~/devops-deployment/devops-deployment.sh"
+alias update_scripts="bash ~/devops-deployment/scripts/update-scripts.sh"
