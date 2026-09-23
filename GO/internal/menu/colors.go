@@ -62,9 +62,8 @@ func NewColors(enabled bool) Colors {
 // ColorsEnabled mirrors the setup_colors() gate for the writer the menu
 // draws to: NO_COLOR must be unset or empty — an empty value counts as
 // unset, like bash's -z "${NO_COLOR:-}" — and w must be a terminal. As
-// with bash's [[ -t 1 ]], only a real file can be a terminal, so any other
-// writer (a bytes.Buffer in the tests, say) disables colors the way a
-// redirected stdout does in bash.
+// with bash's [[ -t 1 ]], only a real file can be a terminal, so redirected
+// output disables colors the way it does in bash.
 func ColorsEnabled(w io.Writer) bool {
 	if os.Getenv("NO_COLOR") != "" {
 		return false

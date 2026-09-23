@@ -44,9 +44,8 @@ func Extract(dest string) (err error) {
 	return extract(embedded, dest)
 }
 
-// extract is Extract against an injected fs.FS, so tests can drive the
-// walk against a fixture tree (the embedded one cannot contain the
-// .DS_Store filter case, since it is pruned at the source).
+// extract is the internal implementation of Extract. The embedded tree
+// cannot contain the .DS_Store filter case, since it is pruned at the source.
 func extract(fsys fs.FS, dest string) (err error) {
 	return fs.WalkDir(fsys, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {

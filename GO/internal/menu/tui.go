@@ -14,8 +14,7 @@
 // written as "\r\n" — the two bytes the line discipline turns bash's bare
 // "\n" printf output into — so the layout matches the bash TUI's.
 //
-// TuiLoop is inherently interactive — it needs a real terminal on fds 0
-// and 1 — so, unlike FallbackMenu, it has no tests.
+// TuiLoop is inherently interactive and needs a real terminal on fds 0 and 1.
 
 package menu
 
@@ -32,17 +31,11 @@ import (
 	"devops-deployment-go/internal/term"
 )
 
-// osExit is the exit FallbackMenu takes on an unparsable option — and the
-// one TuiLoop's signal handler takes. It is a variable so tests can stub
-// it and observe the exit instead of ending the test binary.
-var osExit = os.Exit
-
 // UseTUI ports tui_use_tui(): the interactive menu runs only when stdin
 // and stdout are both terminals and the window — measured on stdout, the
-// fd tui_geometry() probes — is at least 60 columns by 16 lines. The bash
-// test reads TUI_LINES/TUI_COLS as tui_geometry() left them, columns
-// capped at 78; the cap only lowers values above 78, which pass >= 60
-// either way, so comparing the raw size is equivalent.
+// fd tui_geometry() probes — is at least 60 columns by 16 lines. The
+// measured size is capped at 78 columns by the Bash implementation, but
+// values above 78 pass the minimum either way.
 func UseTUI() bool {
 	if !term.IsTTY(0) || !term.IsTTY(1) {
 		return false
@@ -100,7 +93,7 @@ func TuiLoop(osName, pkgMgr, root, scriptDir string, rd *term.Reader) {
 		<-sig
 		term.Restore(state.Load())
 		term.ShowCursor(os.Stdout)
-		osExit(1)
+		os.Exit(1)
 	}()
 
 	term.HideCursor(os.Stdout) // hidden while navigating, as in tui_loop
@@ -286,9 +279,8 @@ func FallbackMenu(osName, pkgMgr, root, scriptDir string) {
 	sel, ok := numericSelection(option)
 	if !ok {
 		fmt.Printf("Invalid option: '%s'.\n", option)
-		osExit(1)
-		// Unreachable under the real os.Exit; keeps the flow honest when
-		// tests stub osExit out.
+		os.Exit(1)
+		// Unreachable under the real os.Exit.
 		return
 	}
 	// bash: `run_menu_action "$sel" || true`. nil Reader: this menu reads
