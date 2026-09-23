@@ -94,8 +94,7 @@ func EraseBlock(n int) {
 	eraseBlock(os.Stdout, n)
 }
 
-// eraseBlock is EraseBlock against an arbitrary writer, so tests can
-// check the exact byte sequence.
+// eraseBlock is EraseBlock against an arbitrary writer.
 func eraseBlock(w io.Writer, n int) {
 	fmt.Fprintf(w, "\x1b[%dA", n)
 	for i := 0; i < n; i++ {

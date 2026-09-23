@@ -168,16 +168,14 @@ const (
 	evidenceDefault                          // $HOME/devops-deployment fallback
 )
 
-// EnvRootPin overrides where the root-pin file lives (tests point it at
-// a fixture); the file itself holds one absolute path — the deployment
-// root an installed `devops` copy resolves when nothing beside the
-// binary or the cwd matches.
+// EnvRootPin overrides where the root-pin file lives; the file itself holds
+// one absolute path — the deployment root an installed `devops` copy
+// resolves when nothing beside the binary or the cwd matches.
 const EnvRootPin = "DEVOPS_DEPLOYMENT_ROOT_PIN"
 
 // rootPinPath returns the root-pin file's location:
 // $DEVOPS_DEPLOYMENT_ROOT_PIN when set, else
-// $HOME/.config/devops-deployment/path. Both come from the environment
-// so tests can redirect them.
+// $HOME/.config/devops-deployment/path.
 func rootPinPath() string {
 	if p := os.Getenv(EnvRootPin); p != "" {
 		return p
@@ -277,8 +275,7 @@ func resolveRoot() string {
 	return root
 }
 
-// resolveRootFrom is resolveRoot's candidate chain with every input
-// injected, so tests can drive it against fixtures. It probes envRoot,
+// resolveRootFrom is resolveRoot's candidate chain. It probes envRoot,
 // the marker file under exeDir and under its parent, pinValue, cwd and
 // its parent, in that order, and falls back to $home/devops-deployment.
 // The returned evidence says which candidate won. Every candidate except
@@ -408,7 +405,7 @@ func hasRegularFile(path string) bool {
 // ensureLocalBinOnPath ports the "Ensure $LOCAL_BIN is on PATH" block of
 // devops-deployment.sh, which runs after the notes and before the menu.
 // LOCAL_BIN is $HOME/.local/bin, built from the $HOME environment
-// variable (not os.UserHomeDir) so tests can point it at a fixture home.
+// variable (not os.UserHomeDir).
 func ensureLocalBinOnPath() error {
 	localBin := filepath.Join(os.Getenv("HOME"), ".local", "bin")
 
@@ -525,8 +522,7 @@ var (
 
 // installTarget returns the conventional install target of the `devops`
 // command: $HOME/.local/bin/devops, built from the $HOME environment
-// variable (not os.UserHomeDir, like ensureLocalBinOnPath) so tests can
-// point it at a fixture home.
+// variable (not os.UserHomeDir, like ensureLocalBinOnPath).
 func installTarget() string {
 	return filepath.Join(os.Getenv("HOME"), ".local", "bin", "devops")
 }

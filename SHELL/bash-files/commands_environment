@@ -51,7 +51,6 @@ k - kubectl shortcuts
   k fwd [list|stop|pod]        port-forward manager (pick, background)
   k ev | events [-w] [-a]      warning events feed (-w live, -a all types)
   k helm                      helm release manager (picker)
-  k htest [chart] [-e env]    helm template render test (values-<env>.yaml)
   k hlint [chart]             helm lint + optional render (k8s/helm_lint.sh)
   k ylint [path]              yaml lint: tabs / spacing / parse (k8s/yaml_lint.sh)
   k kust [path] [--build]     validate kustomization.yaml (k8s/kustomize_check.sh)
@@ -127,10 +126,6 @@ EOF
     helm|release)
       local script="$HOME/.local/bin/scripts/k8s/helm_manager.sh"
       [[ -f "$script" ]] && bash "$script" || helm "$@"
-      ;;
-    htest|helm-test)
-      local script="$HOME/.local/bin/scripts/k8s/helm_template_test.sh"
-      [[ -f "$script" ]] && bash "$script" "$@" || echo "helm_template_test.sh not installed"
       ;;
     hlint|helm-lint)
       local script="$HOME/.local/bin/scripts/k8s/helm_lint.sh"

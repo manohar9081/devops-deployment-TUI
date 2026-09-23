@@ -32,9 +32,8 @@ var errInstallScriptMissing = errors.New("install script not found")
 // assets became built-in (the bash SCRIPT_DIR); rd is the caller's shared
 // keystroke Reader, handed to __config's stack/cloud questions so their
 // pickers read the same instance the menu reads. Callers that read no
-// keystrokes — the line-based fallback menu, the tests — pass nil, and
-// AskStackCloud creates a Reader only if a question turns out to be
-// askable.
+// keystrokes — the line-based fallback menu — pass nil, and AskStackCloud
+// creates a Reader only if a question turns out to be askable.
 //
 // Special actions:
 //   - __all / __core install their tool lists in order, after a y/N
@@ -72,7 +71,7 @@ func RunAction(action, root, scriptDir string, rd *term.Reader) error {
 	if action == "__all" || action == "__core" {
 		fmt.Printf("\n? This will install %d tools. Continue? [y/N] ", len(tools))
 		// bash `read -r confirm`: an empty line or a failed read (EOF)
-		// both leave confirm empty, which fails the y/Y test → abort.
+		// both leave confirm empty, which fails the y/Y check and aborts.
 		line, _ := readLine(os.Stdin)
 		if answer := strings.TrimSpace(line); answer != "y" && answer != "Y" {
 			fmt.Println("Aborted.")

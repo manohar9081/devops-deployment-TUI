@@ -45,15 +45,14 @@ type KeyMsg struct {
 
 // KeySource supplies the raw input bytes one at a time. It matches io's
 // ByteReader, so *bytes.Reader, *bufio.Reader and anything wrapping a tty
-// in raw mode can serve as a source; tests feed synthetic byte slices so
-// the parsing is table-testable without a terminal.
+// in raw mode can serve as a source.
 type KeySource interface {
 	ReadByte() (byte, error)
 }
 
 // escWindow is how long ReadKey waits after ESC for the rest of an escape
 // sequence before reporting a lone KeyEscape, mirroring the script's
-// `read -rsn2 -t 0.05`. It is a variable only so tests can shrink it.
+// `read -rsn2 -t 0.05`.
 var escWindow = 50 * time.Millisecond
 
 // escByte starts every escape sequence.
