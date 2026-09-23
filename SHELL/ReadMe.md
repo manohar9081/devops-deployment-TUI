@@ -112,6 +112,7 @@ and the `k` / `aw` / `tf` dispatchers already point at the new locations.
 | `base64_secret.sh`        | base64 encode/decode + decode every key in a k8s Secret. (Alias: `b64`.) |
 | `decode_jwt.sh`           | Decode a JWT (base64url) header/payload into pretty JSON. |
 | `helm_lint.sh`            | **New.** `helm lint` + optional `helm template` render using a base-values file auto-detected from `base-files/`, `base/`, or passed via `-f`. |
+| `helm_template_test.sh`  | Render a chart with `helm template test . -f values-<env>.yaml` without installing: `-e stg` picks `values-stg.yaml`, arrow-key pickers for chart/values, repeatable `-f`/`--set`/`-n`. |
 | `helm_manager.sh`         | Pick a Helm release across namespaces (arrow keys); status/history/rollback/uninstall/get-values. |
 | `k_cleanup.sh`            | Cluster janitor: list/delete Evicted pods, Completed Jobs, old ReplicaSets. |
 | `k_doctor.sh`             | One-shot pod doctor: events + current/previous logs + restart count. No args = arrow-key pod picker. |

@@ -49,3 +49,4 @@ alias set_cursor="source ~/.local/bin/scripts/misc/set_cursor.sh"
 alias git.="cd ~/gitprojects"
 alias bin.="cd ~/.local/bin"
 # The old deployment / update_scripts aliases are gone: `devops` opens the menu, `devops update` refreshes the scripts.
+alias htest="~/.local/bin/scripts/k8s/helm_template_test.sh"

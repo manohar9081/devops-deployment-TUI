@@ -509,6 +509,14 @@ Helm chart lint + render helper. Runs `helm lint` on a chart and optionally
 `base-files/`, `base/`, or passed via `-f`. Usage: `helm_lint.sh <chart>
 --render`, or just `helm_lint.sh` to arrow-key-pick a chart.
 
+##### `helm_template_test.sh`
+Render a chart locally without installing: `helm_template_test.sh . -e stg`
+runs `helm template test . -f values-stg.yaml`. With no `-e` it lists the
+chart's `values*.yaml` files in an arrow-key picker (single file = used
+automatically). Repeatable `-f other.yaml`, `--set key=value` and
+`-n namespace` are passed through; output goes to stdout (`> out.yaml` to
+save). Alias: `htest`.
+
 ##### `helm_manager.sh`
 Helm release manager: arrow-key-pick a release across all namespaces, then
 status / history / rollback / uninstall / get-values.
